@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _isNear = false;
+  bool nearby = false;
   late StreamSubscription<dynamic> _streamSubscription;
 
   @override
@@ -32,9 +32,9 @@ class _MyAppState extends State<MyApp> {
         FlutterError.dumpErrorToConsole(details);
       }
     };
-    _streamSubscription = ProximitySensor.events.listen((int event) {
+    _streamSubscription = ProximitySensor.events.listen((int status_of_case) {
       setState(() {
-        _isNear = (event > 0) ? true : false;
+        nearby = (status_of_case > 0) ? true : false;
       });
     });
   }
@@ -46,14 +46,15 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Mobile Computing Project'),
+          centerTitle: true,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
               child: CircleAvatar(
-                radius: 50,
-                backgroundColor: _isNear ? Colors.red : Colors.green,
+                radius: 150,
+                backgroundColor: nearby ? Colors.red : Colors.green,
               ),
             ),
           ],
