@@ -5,13 +5,11 @@ import 'package:flutter/foundation.dart' as foundation;
 
 void main() => runApp(MyApp());
 
-/////////////////////////////////////////////////////////////////////////
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
 
-///////////////////////////////////////////////////////////////////////////
 class _MyAppState extends State<MyApp> {
   bool _isNear = false;
   late StreamSubscription<dynamic> _streamSubscription;
